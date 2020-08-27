@@ -22,7 +22,7 @@ namespace HaDatProject.DAO
         public List<Checkinout> GetCheckinouts()
         {
             List<Checkinout> list = new List<Checkinout>();
-            string query = "Select *  from dbo.Checkinout";
+            string query = "Select *  from dbo.Checkinout order by checktime desc";
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
             foreach (DataRow a in data.Rows)
             {

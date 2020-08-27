@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Configuration;
+
 
 namespace HaDatProject.DAO
 {
@@ -19,7 +19,7 @@ namespace HaDatProject.DAO
         }
 
         private DataProvider() { }
-        private string connectionSTR = "Server=(localdb)\\mssqllocaldb;Database=zkdb;Trusted_Connection=True;ConnectRetryCount=0";
+        private string connectionSTR = ConfigurationManager.ConnectionStrings["HaDat"].ConnectionString;
 
         public DataTable ExecuteQuery(string query, object[] parameter = null)
         {

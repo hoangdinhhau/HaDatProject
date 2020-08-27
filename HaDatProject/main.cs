@@ -36,8 +36,20 @@ namespace HaDatProject
         void Loadcheckinout()
         {
             checkinoutlist.DataSource = CheckinoutDAO.Instance.GetCheckinouts();
+            var x = CheckinoutDAO.Instance.GetCheckinouts();
+            // dtgMain.AutoGenerateColumns = false;
             dtgMain.DataSource = checkinoutlist;
+            string[] visibleColumns = { "ID", "pin", "checktime" };
+            foreach(DataGridViewColumn col in dtgMain.Columns)
+            {
+                if(! visibleColumns.Contains(col.Name))
+                {
+                    col.Visible = false;
+                }
+            }
+            dtgMain.Columns["checktime"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
         }
+
 
         //void AddCheckinoutBinding()
         //{
@@ -45,18 +57,6 @@ namespace HaDatProject
         //    dtpChecktime.DataBindings.Add(new Binding("Text", dtgMain.DataSource, "checktime", true, DataSourceUpdateMode.Never));
         //}
 
-        private void dtgMain_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            var checkinouts = dtgMain.SelectedRows;
-            if (checkinouts is null)
-            {
-                return;
-            }
-            var checkinout = checkinouts[0];
-
-            txtPIN.Text = checkinout.Cells[0].Value.ToString();
-            dtpChecktime.Text = checkinout.Cells[1].Value.ToString();
-        }
 
         private void btSearch_Click(object sender, EventArgs e)
         {
@@ -70,6 +70,29 @@ namespace HaDatProject
             {
                 throw ae;
             }
+        }
+
+        private void main_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtgMain_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+        {
+            if (e.StateChanged != DataGridViewElementStates.Selected) return;
+            var selectedRows = dtgMain.SelectedRows;
+            if (selectedRows.Count > 0)
+            {
+                var selected = selectedRows[selectedRows.Count - 1];
+                txtPIN.Text = selected.Cells["pin"].Value.ToString();
+                dtpChecktime.Value = DateTime.Parse(selected.Cells["checktime"].Value.ToString());
+
+            }
+        }
+
+        private void dtgMain_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
