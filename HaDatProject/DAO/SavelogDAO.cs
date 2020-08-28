@@ -68,7 +68,8 @@ namespace HaDatProject.DAO
 
         public bool InsertSavelog(string userName,int checktime_id,DateTime last_info, DateTime edited_info,DateTime edit_time)
         {
-            string query = string.Format("INSERT dbo.NGUOIDAIDIEN ( userName, checktime_id, last_info, edited_info, edit_time )VALUES  ( N'{0}', {1},'{2}','{3}','{4}')", userName, checktime_id, last_info.ToString("yyyy/MM/dd hh:mm:ss"), edited_info.ToString("yyyy/MM/dd hh:mm:ss"), edit_time.ToString("yyyy/MM/dd hh:mm:ss"));
+            string query = string.Format("INSERT dbo.savelog ( userName, checktime_id, last_info, edited_info, edit_time ) VALUES  ( N'{0}', {1},'{2}','{3}','{4}')", userName, checktime_id, last_info.ToString("yyyy/MM/dd hh:mm:ss"), edited_info.ToString("yyyy/MM/dd hh:mm:ss"), edit_time.ToString("yyyy/MM/dd hh:mm:ss"));
+            
             int result = DataProviderLog.Instance.ExecuteNonQuery(query);
             return result > 0;
         }

@@ -119,7 +119,6 @@
     <None Include="Resources\login_128px.png" />
     <None Include="Resources\delete_512px.png" />
     <None Include="Resources\door_sensor_alarmed_80px.png" />
-    <Content Include="scripts\scriptHaDat.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

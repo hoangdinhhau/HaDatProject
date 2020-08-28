@@ -17,6 +17,10 @@ namespace HaDatProject
 
         BindingSource listcheckout = new BindingSource();
 
+        private static string currentUser;
+
+        public static string CurrentUser { get => currentUser; set => currentUser = value; }
+
         public Login()
         {
             InitializeComponent();
@@ -35,6 +39,7 @@ namespace HaDatProject
             if (Login2(userName, passWord))
             {
                 MessageBox.Show("Đăng nhập thành công");
+                currentUser = userName;
                 main f = new main();
                 this.Hide();
                 f.ShowDialog();

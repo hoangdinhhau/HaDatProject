@@ -109,9 +109,16 @@ namespace HaDatProject
               //  string username = Login.txtUserName.Text;
                 if (CheckinoutDAO.Instance.UpdateCheckinout(checktime, id))
                 {
-                    MessageBox.Show("Sửa thành công");
+                    DateTime oldCheckTime = new DateTime();
+                    var selectedRows = dtgMain.SelectedRows;
+                    if (selectedRows.Count > 0)
+                    {
+                        var selected = selectedRows[selectedRows.Count - 1];
+                        oldCheckTime = DateTime.Parse(selected.Cells["checktime"].Value.ToString());
 
-                 //   InsertSavelog(userName, id, last_info, checktime, DateTime.Now);
+                    }
+                    SavelogDAO.Instance.InsertSavelog(Login.CurrentUser, id, oldCheckTime, checktime, DateTime.Now);
+                    MessageBox.Show("Sửa thành công");
                     LoadAdmin();
                 }
                 else
@@ -120,8 +127,9 @@ namespace HaDatProject
                 }
 
             }
-            catch
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 MessageBox.Show("Cập nhật thất bại." + "\n"+
                     "Vui lòng chọn MSNV !");
             }
