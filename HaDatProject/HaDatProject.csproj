@@ -91,6 +91,8 @@
     <None Include="Resources\icons8_update_100px.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\icons8_refresh_32.png" />
+    <None Include="Resources\refresh_96px.png" />
     <Content Include="scripts\scriptHaDat.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

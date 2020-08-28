@@ -19,44 +19,29 @@ namespace HaDatProject
             LoadAdmin();
         }
 
-        public static string GetDateFromDateTime(DateTime datevalue)
-        {
-            return datevalue.ToShortDateString();
-        }
-
         BindingSource checkinoutlist = new BindingSource();
 
         void LoadAdmin()
         {
             dtgMain.DataSource = checkinoutlist;
             Loadcheckinout();
-           // AddCheckinoutBinding();
         }
 
         void Loadcheckinout()
         {
             checkinoutlist.DataSource = CheckinoutDAO.Instance.GetCheckinouts();
             var x = CheckinoutDAO.Instance.GetCheckinouts();
-            // dtgMain.AutoGenerateColumns = false;
             dtgMain.DataSource = checkinoutlist;
             string[] visibleColumns = { "ID", "pin", "checktime" };
-            foreach(DataGridViewColumn col in dtgMain.Columns)
+            foreach (DataGridViewColumn col in dtgMain.Columns)
             {
-                if(! visibleColumns.Contains(col.Name))
+                if (!visibleColumns.Contains(col.Name))
                 {
                     col.Visible = false;
                 }
             }
             dtgMain.Columns["checktime"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
         }
-
-
-        //void AddCheckinoutBinding()
-        //{
-        //    txtPIN.DataBindings.Add(new Binding("Text", dtgMain.DataSource, "ID", true, DataSourceUpdateMode.Never));
-        //    dtpChecktime.DataBindings.Add(new Binding("Text", dtgMain.DataSource, "checktime", true, DataSourceUpdateMode.Never));
-        //}
-
 
         private void btSearch_Click(object sender, EventArgs e)
         {
@@ -84,6 +69,7 @@ namespace HaDatProject
             if (selectedRows.Count > 0)
             {
                 var selected = selectedRows[selectedRows.Count - 1];
+                txtId.Text = selected.Cells["ID"].Value.ToString();
                 txtPIN.Text = selected.Cells["pin"].Value.ToString();
                 dtpChecktime.Value = DateTime.Parse(selected.Cells["checktime"].Value.ToString());
 
@@ -92,6 +78,50 @@ namespace HaDatProject
 
         private void dtgMain_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            AddCheckTimeBinding();
+        }
+
+        private void btResest_Click(object sender, EventArgs e)
+        {
+            txtId.DataBindings.Clear();
+            txtPIN.DataBindings.Clear();
+            dtpChecktime.DataBindings.Clear();
+            LoadAdmin();
+        }
+
+        void AddCheckTimeBinding()
+        {
+            txtId.DataBindings.Add(new Binding("Text", dtgMain.DataSource, "ID", true, DataSourceUpdateMode.Never));
+            txtId.DataBindings.Clear();
+            txtPIN.DataBindings.Add(new Binding("Text", dtgMain.DataSource, "pin", true, DataSourceUpdateMode.Never));
+            txtPIN.DataBindings.Clear();
+            dtpChecktime.DataBindings.Add(new Binding("text", dtgMain.DataSource, "checktime", true, DataSourceUpdateMode.Never));
+            dtpChecktime.DataBindings.Clear();
+
+        }
+
+        private void btUpdate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = Convert.ToInt32(txtId.Text);
+                DateTime checktime = Convert.ToDateTime(dtpChecktime.Value.ToString("yyyy/MM/dd HH:mm:ss"));               
+                if (CheckinoutDAO.Instance.UpdateCheckinout(checktime, id))
+                {
+                    MessageBox.Show("Sửa thành công");
+                    LoadAdmin();
+                }
+                else
+                {
+                    MessageBox.Show("Cập nhật thất bại.");
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("Cập nhật thất bại." + "\n"+
+                    "Vui lòng chọn MSNV !");
+            }
 
         }
     }
