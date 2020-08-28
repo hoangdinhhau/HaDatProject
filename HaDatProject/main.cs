@@ -111,12 +111,22 @@ namespace HaDatProject
                 {
                     DateTime oldCheckTime = new DateTime();
                     var selectedRows = dtgMain.SelectedRows;
+                    DataGridViewRow selectedRow = null;
                     if (selectedRows.Count > 0)
                     {
-                        var selected = selectedRows[selectedRows.Count - 1];
-                        oldCheckTime = DateTime.Parse(selected.Cells["checktime"].Value.ToString());
-
+                        selectedRow = selectedRows[selectedRows.Count - 1];
                     }
+                    else
+                    {
+                        var cells = dtgMain.SelectedCells;
+                        if(cells.Count > 0)
+                        {
+                            selectedRow = dtgMain.Rows[cells[0].RowIndex];
+                        }
+                    }
+                    oldCheckTime = DateTime.Parse(selectedRow.Cells["checktime"].Value.ToString());
+
+
                     SavelogDAO.Instance.InsertSavelog(Login.CurrentUser, id, oldCheckTime, checktime, DateTime.Now);
                     MessageBox.Show("Sửa thành công");
                     LoadAdmin();
