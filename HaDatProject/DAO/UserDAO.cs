@@ -23,9 +23,9 @@ namespace HaDatProject.DAO
 
         public bool Login(string userName, string passWord)
         {
-            string query = "SELECT * FROM dbo.users WHERE username = N'" + userName + "' AND password = N'" + passWord + "' ";
+            string query_login = "USP_Login @userName = N'" + userName + "' , @passWord = N'" + passWord + "'";
 
-            DataTable result = DataProviderLog.Instance.ExecuteQuery(query);
+            DataTable result = DataProviderLog.Instance.ExecuteQuery(query_login, new object[] { userName, passWord });
 
             return result.Rows.Count > 0;
         }
