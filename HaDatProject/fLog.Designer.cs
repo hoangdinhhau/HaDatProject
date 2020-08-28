@@ -30,14 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fLog));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.dtgLog = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtUserName = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btSeachLog = new System.Windows.Forms.Button();
             this.txtChecktime_Id = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btSeachLog = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
+            this.txtUserName = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.dtgLog = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgLog)).BeginInit();
@@ -57,39 +57,27 @@
             this.panel1.Size = new System.Drawing.Size(795, 100);
             this.panel1.TabIndex = 0;
             // 
-            // panel2
+            // label3
             // 
-            this.panel2.Controls.Add(this.dtgLog);
-            this.panel2.Location = new System.Drawing.Point(3, 107);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(795, 331);
-            this.panel2.TabIndex = 1;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(371, 54);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(72, 17);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Tìm kiếm";
             // 
-            // dtgLog
+            // btSeachLog
             // 
-            this.dtgLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgLog.Location = new System.Drawing.Point(4, 4);
-            this.dtgLog.Name = "dtgLog";
-            this.dtgLog.RowTemplate.Height = 24;
-            this.dtgLog.Size = new System.Drawing.Size(788, 324);
-            this.dtgLog.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(24, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "USER NAME";
-            // 
-            // txtUserName
-            // 
-            this.txtUserName.Location = new System.Drawing.Point(165, 9);
-            this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(151, 22);
-            this.txtUserName.TabIndex = 1;
+            this.btSeachLog.BackColor = System.Drawing.Color.Honeydew;
+            this.btSeachLog.BackgroundImage = global::HaDatProject.Properties.Resources.google_web_search_100px;
+            this.btSeachLog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btSeachLog.Location = new System.Drawing.Point(362, 9);
+            this.btSeachLog.Name = "btSeachLog";
+            this.btSeachLog.Size = new System.Drawing.Size(90, 42);
+            this.btSeachLog.TabIndex = 4;
+            this.btSeachLog.UseVisualStyleBackColor = false;
+            this.btSeachLog.Click += new System.EventHandler(this.btSeachLog_Click);
             // 
             // txtChecktime_Id
             // 
@@ -109,27 +97,41 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "CHECKTIME_ID";
             // 
-            // btSeachLog
+            // txtUserName
             // 
-            this.btSeachLog.BackColor = System.Drawing.Color.Honeydew;
-            this.btSeachLog.BackgroundImage = global::HaDatProject.Properties.Resources.google_web_search_100px;
-            this.btSeachLog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btSeachLog.Location = new System.Drawing.Point(362, 9);
-            this.btSeachLog.Name = "btSeachLog";
-            this.btSeachLog.Size = new System.Drawing.Size(90, 42);
-            this.btSeachLog.TabIndex = 4;
-            this.btSeachLog.UseVisualStyleBackColor = false;
-            this.btSeachLog.Click += new System.EventHandler(this.btSeachLog_Click);
+            this.txtUserName.Location = new System.Drawing.Point(165, 9);
+            this.txtUserName.Name = "txtUserName";
+            this.txtUserName.Size = new System.Drawing.Size(151, 22);
+            this.txtUserName.TabIndex = 1;
             // 
-            // label3
+            // label1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(371, 54);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 17);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Tìm kiếm";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(24, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "USER NAME";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.dtgLog);
+            this.panel2.Location = new System.Drawing.Point(3, 107);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(795, 331);
+            this.panel2.TabIndex = 1;
+            // 
+            // dtgLog
+            // 
+            this.dtgLog.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dtgLog.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dtgLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgLog.Location = new System.Drawing.Point(4, 4);
+            this.dtgLog.Name = "dtgLog";
+            this.dtgLog.RowTemplate.Height = 24;
+            this.dtgLog.Size = new System.Drawing.Size(788, 324);
+            this.dtgLog.TabIndex = 0;
             // 
             // fLog
             // 
