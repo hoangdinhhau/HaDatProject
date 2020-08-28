@@ -63,6 +63,26 @@ namespace HaDatProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap delete_512px {
+            get {
+                object obj = ResourceManager.GetObject("delete_512px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap door_sensor_alarmed_80px {
+            get {
+                object obj = ResourceManager.GetObject("door_sensor_alarmed_80px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap google_web_search_100px {
             get {
                 object obj = ResourceManager.GetObject("google_web_search_100px", resourceCulture);
@@ -86,6 +106,16 @@ namespace HaDatProject.Properties {
         internal static System.Drawing.Bitmap icons8_update_100px {
             get {
                 object obj = ResourceManager.GetObject("icons8_update_100px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap login_128px {
+            get {
+                object obj = ResourceManager.GetObject("login_128px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

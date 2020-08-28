@@ -49,7 +49,24 @@
   <ItemGroup>
     <Compile Include="DAO\CheckinoutDAO.cs" />
     <Compile Include="DAO\DataProvider.cs" />
+    <Compile Include="DAO\DataProviderLog.cs" />
+    <Compile Include="DAO\SavelogDAO.cs" />
+    <Compile Include="DAO\UserDAO.cs" />
     <Compile Include="DTO\Checkinout.cs" />
+    <Compile Include="DTO\Savelog.cs" />
+    <Compile Include="DTO\User.cs" />
+    <Compile Include="fLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fLog.Designer.cs">
+      <DependentUpon>fLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,6 +75,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="fLog.resx">
+      <DependentUpon>fLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="main.resx">
       <DependentUpon>main.cs</DependentUpon>
     </EmbeddedResource>
@@ -93,6 +116,9 @@
   <ItemGroup>
     <None Include="Resources\icons8_refresh_32.png" />
     <None Include="Resources\refresh_96px.png" />
+    <None Include="Resources\login_128px.png" />
+    <None Include="Resources\delete_512px.png" />
+    <None Include="Resources\door_sensor_alarmed_80px.png" />
     <Content Include="scripts\scriptHaDat.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

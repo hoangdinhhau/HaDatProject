@@ -91,11 +91,11 @@ namespace HaDatProject
 
         void AddCheckTimeBinding()
         {
-            txtId.DataBindings.Add(new Binding("Text", dtgMain.DataSource, "ID", true, DataSourceUpdateMode.Never));
-            txtId.DataBindings.Clear();
-            txtPIN.DataBindings.Add(new Binding("Text", dtgMain.DataSource, "pin", true, DataSourceUpdateMode.Never));
-            txtPIN.DataBindings.Clear();
+            txtId.DataBindings.Add(new Binding("Text", dtgMain.DataSource, "ID", true, DataSourceUpdateMode.Never));           
+            txtPIN.DataBindings.Add(new Binding("Text", dtgMain.DataSource, "pin", true, DataSourceUpdateMode.Never));            
             dtpChecktime.DataBindings.Add(new Binding("text", dtgMain.DataSource, "checktime", true, DataSourceUpdateMode.Never));
+            txtPIN.DataBindings.Clear();
+            txtId.DataBindings.Clear();
             dtpChecktime.DataBindings.Clear();
 
         }
@@ -105,10 +105,13 @@ namespace HaDatProject
             try
             {
                 int id = Convert.ToInt32(txtId.Text);
-                DateTime checktime = Convert.ToDateTime(dtpChecktime.Value.ToString("yyyy/MM/dd HH:mm:ss"));               
+                DateTime checktime = Convert.ToDateTime(dtpChecktime.Value.ToString("yyyy/MM/dd HH:mm:ss"));  
+              //  string username = Login.txtUserName.Text;
                 if (CheckinoutDAO.Instance.UpdateCheckinout(checktime, id))
                 {
                     MessageBox.Show("Sửa thành công");
+
+                 //   InsertSavelog(userName, id, last_info, checktime, DateTime.Now);
                     LoadAdmin();
                 }
                 else
@@ -123,6 +126,43 @@ namespace HaDatProject
                     "Vui lòng chọn MSNV !");
             }
 
+        }
+
+        private void btLogout_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Bạn muốn đăng xuất ?");
+            Login f = new Login();
+            this.Hide();
+            f.ShowDialog();
+            this.Show();
+        }
+
+        private void btSearch_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                string pin = txtSearch.Text;
+                checkinoutlist.DataSource = CheckinoutDAO.Instance.SeachCheckinout(pin);
+                dtgMain.DataSource = checkinoutlist;
+            }
+            catch (Exception ae)
+            {
+                throw ae;
+            }
+        }
+
+        private void btResest_Click_1(object sender, EventArgs e)
+        {
+            txtId.DataBindings.Clear();
+            txtPIN.DataBindings.Clear();
+            dtpChecktime.DataBindings.Clear();
+            LoadAdmin();
+        }
+
+        private void lịchSửChỉnhSửaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fLog log = new fLog();
+            log.ShowDialog();
         }
     }
 }
