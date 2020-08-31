@@ -171,9 +171,9 @@ namespace HaDatProject
 
         private void btResest_Click_1(object sender, EventArgs e)
         {
-            txtId.DataBindings.Clear();
-            txtPIN.DataBindings.Clear();
-            dtpChecktime.DataBindings.Clear();
+            txtId.Text = "";
+            dtpChecktime.Text = DateTime.Now.Date.ToString();
+            txtPIN.Text = "";
             LoadAdmin();
         }
 

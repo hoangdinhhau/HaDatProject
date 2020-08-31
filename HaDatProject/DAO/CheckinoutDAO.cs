@@ -34,7 +34,7 @@ namespace HaDatProject.DAO
 
         public bool UpdateCheckinout(DateTime checktime, int Id)
         {
-            string query = string.Format("UPDATE dbo.Checkinout SET Checktime = '{0}' WHERE id = {1}", checktime.ToString("yyyy/MM/dd hh:mm:ss"), Id);
+            string query = string.Format("UPDATE dbo.Checkinout SET Checktime = '{0}' WHERE id = {1}", checktime.ToString("yyyy/MM/dd HH:mm:ss"), Id);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;
