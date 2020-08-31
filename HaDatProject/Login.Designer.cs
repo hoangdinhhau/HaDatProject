@@ -105,10 +105,10 @@
             // txtPasswords
             // 
             this.txtPasswords.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPasswords.Location = new System.Drawing.Point(136, 125);
+            this.txtPasswords.Location = new System.Drawing.Point(157, 125);
             this.txtPasswords.Name = "txtPasswords";
             this.txtPasswords.PasswordChar = '*';
-            this.txtPasswords.Size = new System.Drawing.Size(191, 25);
+            this.txtPasswords.Size = new System.Drawing.Size(174, 25);
             this.txtPasswords.TabIndex = 11;
             this.txtPasswords.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPasswords_KeyDown);
             // 
@@ -125,9 +125,9 @@
             // txtUserName
             // 
             this.txtUserName.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserName.Location = new System.Drawing.Point(136, 77);
+            this.txtUserName.Location = new System.Drawing.Point(157, 77);
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(191, 25);
+            this.txtUserName.Size = new System.Drawing.Size(174, 25);
             this.txtUserName.TabIndex = 9;
             // 
             // label2
