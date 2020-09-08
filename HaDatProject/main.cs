@@ -23,7 +23,7 @@ namespace HaDatProject
 
         void LoadAdmin()
         {
-            dtgMain.DataSource = checkinoutlist;
+            // dtgMain.DataSource = checkinoutlist;
             Loadcheckinout();
         }
 
@@ -41,21 +41,7 @@ namespace HaDatProject
                 }
             }
             dtgMain.Columns["checktime"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
-        }
-
-        private void btSearch_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string pin = txtSearch.Text;
-                checkinoutlist.DataSource = CheckinoutDAO.Instance.SeachCheckinout(pin);
-                dtgMain.DataSource = checkinoutlist;
-            }
-            catch (Exception ae)
-            {
-                throw ae;
-            }
-        }
+        }      
 
         private void main_Load(object sender, EventArgs e)
         {
@@ -77,7 +63,7 @@ namespace HaDatProject
         }
 
         private void dtgMain_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+        {      
             AddCheckTimeBinding();
         }
 
@@ -91,9 +77,9 @@ namespace HaDatProject
 
         void AddCheckTimeBinding()
         {
-            txtId.DataBindings.Add(new Binding("Text", dtgMain.DataSource, "ID", true, DataSourceUpdateMode.Never));           
-            txtPIN.DataBindings.Add(new Binding("Text", dtgMain.DataSource, "pin", true, DataSourceUpdateMode.Never));            
-            dtpChecktime.DataBindings.Add(new Binding("text", dtgMain.DataSource, "checktime", true, DataSourceUpdateMode.Never));
+            txtId.DataBindings.Add(new Binding("Text", dtgMain.DataSource, "ID", true, DataSourceUpdateMode.Never));
+            txtPIN.DataBindings.Add(new Binding("Text", dtgMain.DataSource, "pin", true, DataSourceUpdateMode.Never));
+            dtpChecktime.DataBindings.Add(new Binding("value", dtgMain.DataSource, "checktime", true, DataSourceUpdateMode.Never));
             txtPIN.DataBindings.Clear();
             txtId.DataBindings.Clear();
             dtpChecktime.DataBindings.Clear();
@@ -105,8 +91,8 @@ namespace HaDatProject
             try
             {
                 int id = Convert.ToInt32(txtId.Text);
-                DateTime checktime = Convert.ToDateTime(dtpChecktime.Value.ToString("yyyy/MM/dd HH:mm:ss"));  
-              //  string username = Login.txtUserName.Text;
+                DateTime checktime = Convert.ToDateTime(dtpChecktime.Value.ToString("yyyy/MM/dd HH:mm:ss"));
+                //  string username = Login.txtUserName.Text;
                 if (CheckinoutDAO.Instance.UpdateCheckinout(checktime, id))
                 {
                     DateTime oldCheckTime = new DateTime();
@@ -119,17 +105,15 @@ namespace HaDatProject
                     else
                     {
                         var cells = dtgMain.SelectedCells;
-                        if(cells.Count > 0)
+                        if (cells.Count > 0)
                         {
                             selectedRow = dtgMain.Rows[cells[0].RowIndex];
                         }
                     }
                     oldCheckTime = DateTime.Parse(selectedRow.Cells["checktime"].Value.ToString());
-
-
                     SavelogDAO.Instance.InsertSavelog(Login.CurrentUser, id, oldCheckTime, checktime, DateTime.Now);
                     MessageBox.Show("Sửa thành công");
-                    LoadAdmin();
+                    btSearch_Click_1(sender, e);
                 }
                 else
                 {
@@ -140,7 +124,7 @@ namespace HaDatProject
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-                MessageBox.Show("Cập nhật thất bại." + "\n"+
+                MessageBox.Show("Cập nhật thất bại." + "\n" +
                     "Vui lòng chọn MSNV !");
             }
 
@@ -160,7 +144,9 @@ namespace HaDatProject
             try
             {
                 string pin = txtSearch.Text;
-                checkinoutlist.DataSource = CheckinoutDAO.Instance.SeachCheckinout(pin);
+                DateTime todate = Convert.ToDateTime(dtpTungay.Value.ToString("yyyy/MM/dd"));
+                DateTime fromdate = Convert.ToDateTime(dtpDenngay.Value.ToString("yyyy/MM/dd"));
+                checkinoutlist.DataSource = CheckinoutDAO.Instance.SeachCheckinout(pin, todate, fromdate);
                 dtgMain.DataSource = checkinoutlist;
             }
             catch (Exception ae)
@@ -172,8 +158,11 @@ namespace HaDatProject
         private void btResest_Click_1(object sender, EventArgs e)
         {
             txtId.Text = "";
-            dtpChecktime.Text = DateTime.Now.Date.ToString();
             txtPIN.Text = "";
+            txtSearch.Text = "";
+            dtpChecktime.Text = DateTime.Now.Date.ToString();
+            dtpDenngay.Text = DateTime.Now.Date.ToString();
+            dtpTungay.Text = DateTime.Now.Date.ToString("yyyy/MM/01");         
             LoadAdmin();
         }
 
@@ -181,6 +170,11 @@ namespace HaDatProject
         {
             fLog log = new fLog();
             log.ShowDialog();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

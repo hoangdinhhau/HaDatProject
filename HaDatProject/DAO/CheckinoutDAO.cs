@@ -22,7 +22,7 @@ namespace HaDatProject.DAO
         public List<Checkinout> GetCheckinouts()
         {
             List<Checkinout> list = new List<Checkinout>();
-            string query = "Select *  from dbo.Checkinout order by checktime desc";
+            string query = "select * from checkinout where CONVERT(date, checktime) like CONVERT(date, getdate()) order by checktime desc";
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
             foreach (DataRow a in data.Rows)
             {
@@ -40,11 +40,15 @@ namespace HaDatProject.DAO
             return result > 0;
         }
 
-        public List<Checkinout> SeachCheckinout(string pin)
+        public List<Checkinout> SeachCheckinout(string pin, DateTime todate, DateTime fromdate)
         {
+            var _todate = todate.ToString("yyyy/MM/dd");
+            _todate = _todate.ToString();
+            var _fromdate = fromdate.ToString("yyyy/MM/dd");
+            _fromdate = _fromdate.ToString();
             List<Checkinout> list = new List<Checkinout>();
-
-            string query = string.Format("SELECT * FROM dbo.Checkinout WHERE pin LIKE N'%{0}%' ", pin);
+            string query = string.Format("SELECT * FROM dbo.Checkinout WHERE pin LIKE N'%{0}%' and CONVERT(date, checktime) between '{1}' and '{2}' ",
+                pin, _todate, _fromdate);
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 

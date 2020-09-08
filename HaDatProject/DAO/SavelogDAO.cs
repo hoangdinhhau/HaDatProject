@@ -24,7 +24,7 @@ namespace HaDatProject.DAO
         public List<Savelog> GetSavelogs()
         {
             List<Savelog> list = new List<Savelog>();
-            string query = "Select *  from dbo.Savelog order by id desc";
+            string query = "Select * from dbo.Savelog where CONVERT(date, edit_time) like CONVERT(date, getdate()) order by id desc";
             DataTable data = DataProviderLog.Instance.ExecuteQuery(query);
             foreach (DataRow a in data.Rows)
             {
@@ -77,8 +77,7 @@ namespace HaDatProject.DAO
             _edited_info = _edited_info.ToString();
             var _edit_time = edit_time.ToString("yyyy/MM/dd HH:mm:ss tt");
             _edit_time = _edit_time.ToString();
-
-            string query = string.Format("INSERT dbo.savelog ( userName, checktime_id, last_info, edited_info, edit_time ) VALUES  ( N'{0}', {1},'{2}','{3}','{4}')"
+            string query = string.Format("INSERT INTO dbo.savelog ( userName, checktime_id, last_info, edited_info, edit_time ) VALUES  ( N'{0}', {1},'{2}','{3}','{4}')"
                 , userName, checktime_id, _last_info, _edited_info, _edit_time);
             
             int result = DataProviderLog.Instance.ExecuteNonQuery(query);

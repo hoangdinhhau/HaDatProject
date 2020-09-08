@@ -9,18 +9,13 @@ namespace HaDatProject.DTO
 {
     public class Checkinout
     {
-        private int iD;
-        public int ID
-        {
-            get { return iD; }
-            set { iD = value; }
-        }
+        public int ID { get; set; }
         private string pin;
         public string Pin
         {
             get { return pin; }
             set { pin = value; }
-        }       
+        }
         private DateTime checktime;
         public DateTime Checktime
         {
@@ -70,7 +65,7 @@ namespace HaDatProject.DTO
             set { sn_name = value; }
         }
 
-        public Checkinout(int id, string pin, DateTime checktime, string checktype, 
+        public Checkinout(int id, string pin, DateTime checktime, string checktype,
             int verifycode, string sn, string sensorid, string workcode, string reserved, string sn_name)
         {
             this.ID = id;
