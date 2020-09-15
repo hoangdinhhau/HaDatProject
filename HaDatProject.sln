@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.1231
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HaDatProject", "HaDatProject\HaDatProject.csproj", "{710F2ADD-D4EA-42AA-BE5E-B23CF6BEF323}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Checktime", "Checktime\Checktime.vdproj", "{9410B216-C895-42AD-8CFE-8A9ACFD81242}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{710F2ADD-D4EA-42AA-BE5E-B23CF6BEF323}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{710F2ADD-D4EA-42AA-BE5E-B23CF6BEF323}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{710F2ADD-D4EA-42AA-BE5E-B23CF6BEF323}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9410B216-C895-42AD-8CFE-8A9ACFD81242}.Debug|Any CPU.ActiveCfg = Debug
+		{9410B216-C895-42AD-8CFE-8A9ACFD81242}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
