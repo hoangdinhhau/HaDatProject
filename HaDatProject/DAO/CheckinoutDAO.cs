@@ -40,6 +40,14 @@ namespace HaDatProject.DAO
             return result > 0;
         }
 
+        public bool DeleteCheckinout(int Id)
+        {
+            string query = string.Format("DELETE dbo.Checkinout WHERE id = {0}", Id);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+
         public List<Checkinout> SeachCheckinout(string pin, DateTime todate, DateTime fromdate)
         {
             var _todate = todate.ToString("yyyy/MM/dd");

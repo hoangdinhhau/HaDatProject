@@ -53,6 +53,7 @@
             this.checktime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.lịchSửChỉnhSửaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btXoa = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -62,6 +63,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btXoa);
             this.panel1.Controls.Add(this.txtId);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.btLogout);
@@ -192,7 +194,7 @@
             this.btLogout.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btLogout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btLogout.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Bold);
-            this.btLogout.Location = new System.Drawing.Point(593, 89);
+            this.btLogout.Location = new System.Drawing.Point(704, 91);
             this.btLogout.Name = "btLogout";
             this.btLogout.Size = new System.Drawing.Size(98, 56);
             this.btLogout.TabIndex = 30;
@@ -322,6 +324,19 @@
             this.lịchSửChỉnhSửaToolStripMenuItem.Text = "Lịch sử chỉnh sửa";
             this.lịchSửChỉnhSửaToolStripMenuItem.Click += new System.EventHandler(this.lịchSửChỉnhSửaToolStripMenuItem_Click);
             // 
+            // btXoa
+            // 
+            this.btXoa.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btXoa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btXoa.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Bold);
+            this.btXoa.Location = new System.Drawing.Point(593, 91);
+            this.btXoa.Name = "btXoa";
+            this.btXoa.Size = new System.Drawing.Size(98, 56);
+            this.btXoa.TabIndex = 34;
+            this.btXoa.Text = "Xóa";
+            this.btXoa.UseVisualStyleBackColor = false;
+            this.btXoa.Click += new System.EventHandler(this.btXoa_Click);
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -374,6 +389,7 @@
         private System.Windows.Forms.DateTimePicker dtpTungay;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtId;
+        private System.Windows.Forms.Button btXoa;
     }
 }
 

@@ -172,9 +172,46 @@ namespace HaDatProject
             log.ShowDialog();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void btXoa_Click(object sender, EventArgs e)
         {
+            try
+            {
+                DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa dữ liệu", "Xác nhận", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    int id = Convert.ToInt32(txtId.Text);
+                    if (CheckinoutDAO.Instance.DeleteCheckinout(id))
+                    {
+                        DateTime oldCheckTime = new DateTime();
+                        var selectedRows = dtgMain.SelectedRows;
+                        DataGridViewRow selectedRow = null;
+                        if (selectedRows.Count > 0)
+                        {
+                            selectedRow = selectedRows[selectedRows.Count - 1];
+                        }
+                        else
+                        {
+                            var cells = dtgMain.SelectedCells;
+                            if (cells.Count > 0)
+                            {
+                                selectedRow = dtgMain.Rows[cells[0].RowIndex];
+                            }
+                        }
+                        oldCheckTime = DateTime.Parse(selectedRow.Cells["checktime"].Value.ToString());
+                        DateTime checktime = DateTime.Parse("01/01/2000");
+                        SavelogDAO.Instance.InsertSavelog(Login.CurrentUser, id, oldCheckTime, checktime, DateTime.Now);
+                        btSearch_Click_1(sender, e);
+                    }
+                    MessageBox.Show("Xóa thành công");
+                    LoadAdmin();
+                }
 
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }
